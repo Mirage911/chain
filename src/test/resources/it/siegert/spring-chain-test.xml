@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+
+    <bean id="handlerChainFactory"
+          class="it.siegert.chain.impl.GenericHandlerChainFactoryImpl">
+        <constructor-arg index="0" value="handlerChain"/>
+        <constructor-arg index="1" value="chainModel"/>
+    </bean>
+
+    <bean id="chainModel" class="it.siegert.chain.impl.ChainModelImpl"
+          scope="prototype" />
+
+    <bean id="handlerChain"
+          class="it.siegert.chain.impl.GenericHandlerChainImpl"
+          scope="prototype">
+        <constructor-arg index="0" ref="handlerList"/>
+    </bean>
+
+    <util:list id="handlerList"
+               list-class="java.util.ArrayList"
+               value-type="it.siegert.chain.api.GenericHandler">
+        <bean class="it.siegert.chain.impl.LinuxHandler" />
+        <bean class="it.siegert.chain.impl.WindowsHandler" />
+        <bean class="it.siegert.chain.impl.DefaultHandler" />
+    </util:list>
+
+
+</beans>
