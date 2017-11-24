@@ -1,0 +1,37 @@
+#
+# FILES AND FOLDERS IGNORED BY GIT
+#
+# Folders
+overlays/
+target/
+.idea/
+logs/
+log/
+temp/
+tmp/
+work/
+consul/
+
+#File Types
+*.iml
+*.bak
+*~
+*.log
+*.ipr
+*.iws
+*.lck
+*.scssc
+
+# Files
+.settings
+.project
+.pmd
+.classpath
+statement.html
+/atlassian-ide-plugin.xml
+/checkstyle.xml
+/pmd.xml
+
+.checkstyle
+.ruleset
+checkstyle
